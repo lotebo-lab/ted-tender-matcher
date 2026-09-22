@@ -1,0 +1,63 @@
+{
+  "totalNoticeCount": 5,
+  "notices": [
+    {
+      "publication-number": "00512345-2026",
+      "notice-title": { "eng": ["Construction of a primary school in Dortmund"] },
+      "buyer-name": { "deu": ["Stadt Dortmund"] },
+      "buyer-country": "DEU",
+      "classification-cpv": ["45214210", "45000000"],
+      "total-value": 2400000,
+      "deadline-receipt-tender-date-lot": "2026-10-30T12:00:00+02:00",
+      "announcement-url": "https://ted.europa.eu/en/notice/-/detail/00512345-2026",
+      "buyer-person": "Anna Schmidt",
+      "winner-person": "Klaus Meier",
+      "first-name-ubo": "Anna",
+      "contact-email": "vergabe@dortmund.example",
+      "contact-telephone": "+49 231 0000000"
+    },
+    {
+      "publication-number": "00512400-2026",
+      "notice-title": { "por": ["Requalificacao da Rua do Comercio"] },
+      "buyer-name": { "por": ["Municipio de Aveiro"] },
+      "buyer-country": "PRT",
+      "classification-cpv": ["45233120"],
+      "total-value": 850000,
+      "deadline-receipt-tender-date-lot": "2026-11-12T17:00:00+01:00",
+      "announcement-url": "https://ted.europa.eu/en/notice/-/detail/00512400-2026",
+      "buyer-person": "Jose Ferreira"
+    },
+    {
+      "publication-number": "00512455-2026",
+      "notice-title": { "eng": ["School furniture for two classrooms"] },
+      "buyer-name": { "deu": ["Landkreis Harburg"] },
+      "buyer-country": "DEU",
+      "classification-cpv": ["45214220"],
+      "total-value": 120000,
+      "deadline-receipt-tender-date-lot": "2026-10-20T10:00:00+02:00",
+      "announcement-url": "https://ted.europa.eu/en/notice/-/detail/00512455-2026"
+    },
+    {
+      "publication-number": "00512502-2026",
+      "notice-title": { "fra": ["Construction d'une ecole primaire - school building"] },
+      "buyer-name": { "fra": ["Ville de Nantes"] },
+      "buyer-country": "FRA",
+      "classification-cpv": ["45214210"],
+      "total-value": 3000000,
+      "deadline-receipt-tender-date-lot": "2026-12-01T16:00:00+01:00",
+      "announcement-url": "https://ted.europa.eu/en/notice/-/detail/00512502-2026"
+    },
+    {
+      "publication-number": "00512590-2026",
+      "notice-title": { "eng": ["Construction of a school canteen in Braga"] },
+      "buyer-name": { "por": ["Municipio de Braga"] },
+      "buyer-country": "PRT",
+      "classification-cpv": ["45214100"],
+      "total-value": 1250000,
+      "deadline-receipt-tender-date-lot": "2026-11-05T15:00:00+00:00",
+      "announcement-url": "https://ted.europa.eu/en/notice/-/detail/00512590-2026",
+      "jury-member-name-lot": "Maria Lopes",
+      "winner-touchpoint-name": "Construtora Exemplo Lda"
+    }
+  ]
+}

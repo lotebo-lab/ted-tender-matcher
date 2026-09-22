@@ -1,0 +1,175 @@
+{
+    "actorSpecification": 1,
+    "fields": {
+        "type": "object",
+        "properties": {
+            "rowType": {
+                "type": "string",
+                "title": "Row type",
+                "description": "tender for a matching notice, summary for the single run summary row that every successful run writes. Filter on this field to keep only tenders.",
+                "enum": ["tender", "summary"],
+                "example": "tender"
+            },
+            "notice_title": {
+                "type": "string",
+                "title": "Notice title",
+                "example": "Construction of a school building"
+            },
+            "buyer_name": {
+                "type": "string",
+                "title": "Buyer",
+                "description": "Name of the contracting organisation. Organisation only, never a person.",
+                "example": "Ville de Lyon"
+            },
+            "buyer_country": {
+                "type": "string",
+                "title": "Country",
+                "example": "FRA"
+            },
+            "cpv_codes": {
+                "type": "array",
+                "title": "CPV codes",
+                "example": ["45214200", "45000000"]
+            },
+            "total_value_eur": {
+                "type": ["number", "null"],
+                "title": "Value (EUR)",
+                "example": 1250000
+            },
+            "deadline": {
+                "type": ["string", "null"],
+                "title": "Tender deadline",
+                "example": "2026-11-30Z"
+            },
+            "publication_number": {
+                "type": ["string", "null"],
+                "title": "Publication number",
+                "example": "00123456-2026"
+            },
+            "announcement_url": {
+                "type": ["string", "null"],
+                "title": "Notice URL",
+                "example": "https://ted.europa.eu/en/notice/-/detail/00123456-2026"
+            },
+            "message": {
+                "type": "string",
+                "title": "Run summary",
+                "description": "Only on the summary row: how many notices were read from TED, how many matched the filters and how many were stored, in one sentence.",
+                "example": "No tender matched: 120 notice(s) were read from TED and none of them matched your filters (CPV 45214200; countries FRA; minimum value EUR 0; keywords none)."
+            },
+            "criteria": {
+                "type": "string",
+                "title": "Filters used",
+                "description": "Only on the summary row: the CPV codes, countries, minimum value and keywords this run filtered with.",
+                "example": "CPV 45000000; countries DEU, PRT; minimum value EUR 200000; keywords school"
+            },
+            "noticesRead": {
+                "type": "integer",
+                "title": "Notices read",
+                "description": "Only on the summary row: how many notices TED answered before the filters were applied.",
+                "example": 120
+            },
+            "matchedNotices": {
+                "type": "integer",
+                "title": "Notices matched",
+                "description": "Only on the summary row: how many notices matched the filters.",
+                "example": 3
+            },
+            "storedNotices": {
+                "type": "integer",
+                "title": "Notices stored",
+                "description": "Only on the summary row: how many tender rows this dataset holds.",
+                "example": 3
+            },
+            "chargedEvents": {
+                "type": "integer",
+                "title": "Charged events",
+                "description": "Only on the summary row: how many tender-matched events this run charged. The summary row itself charges nothing.",
+                "example": 3
+            },
+            "chargeLimitReached": {
+                "type": "boolean",
+                "title": "Charge limit reached",
+                "description": "Only on the summary row: true when the run stopped early because the pay-per-event limit was spent.",
+                "example": false
+            },
+            "chargeFailures": {
+                "type": "integer",
+                "title": "Charge failures",
+                "description": "Only on the summary row: charges that did not go through; the run finished anyway.",
+                "example": 0
+            },
+            "finishedAt": {
+                "type": "string",
+                "title": "Finished at",
+                "description": "Only on the summary row: when the run finished, in UTC.",
+                "example": "2026-09-20T18:00:00Z"
+            }
+        }
+    },
+    "views": {
+        "overview": {
+            "title": "Matching tenders",
+            "description": "One row per matching TED notice, plus one summary row per run. Eight public fields only, no personal data.",
+            "transformation": {
+                "fields": [
+                    "rowType",
+                    "notice_title",
+                    "buyer_name",
+                    "buyer_country",
+                    "cpv_codes",
+                    "total_value_eur",
+                    "deadline",
+                    "publication_number",
+                    "announcement_url",
+                    "message"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "rowType": {
+                        "label": "Row",
+                        "format": "text"
+                    },
+                    "notice_title": {
+                        "label": "Notice title",
+                        "format": "text"
+                    },
+                    "buyer_name": {
+                        "label": "Buyer",
+                        "format": "text"
+                    },
+                    "buyer_country": {
+                        "label": "Country",
+                        "format": "text"
+                    },
+                    "cpv_codes": {
+                        "label": "CPV codes",
+                        "format": "array"
+                    },
+                    "total_value_eur": {
+                        "label": "Value (EUR)",
+                        "format": "number"
+                    },
+                    "deadline": {
+                        "label": "Tender deadline",
+                        "format": "text"
+                    },
+                    "publication_number": {
+                        "label": "Publication number",
+                        "format": "text"
+                    },
+                    "announcement_url": {
+                        "label": "Notice URL",
+                        "format": "link"
+                    },
+                    "message": {
+                        "label": "Run summary",
+                        "format": "text"
+                    }
+                }
+            }
+        }
+    }
+}

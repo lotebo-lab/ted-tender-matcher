@@ -1,0 +1,19 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "EU Tenders Scraper output",
+    "description": "One dataset row per TED notice that matched the filters, plus one summary row that every successful run writes even when nothing matched, plus a SUMMARY record with the totals for the run.",
+    "properties": {
+        "tenders": {
+            "type": "string",
+            "title": "Matching tenders",
+            "description": "One item per matching notice (rowType tender), with eight public fields: notice_title, buyer_name, buyer_country, cpv_codes, total_value_eur, deadline, publication_number and announcement_url. No personal data is collected. The last item of every run is the rowType summary row, whose message field says how many notices were read from TED, how many matched and how many were stored, so a run with no match still explains itself.",
+            "template": "{{links.apiDefaultDatasetUrl}}/items"
+        },
+        "summary": {
+            "type": "string",
+            "title": "Run summary",
+            "description": "The same totals as the summary row of the dataset: noticesRead, matchedNotices, storedNotices, chargedEvents, chargeLimitReached, chargeFailures and the criteria used in the run.",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/SUMMARY"
+        }
+    }
+}

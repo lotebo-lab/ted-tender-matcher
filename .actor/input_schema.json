@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "title": "EU public tender alerts (TED)",
+  "type": "object",
+  "description": "Filter public contract notices published on Tenders Electronic Daily (TED). Only public, non-personal fields of each notice are returned.",
+  "properties": {
+    "cpvCodes": {
+      "title": "CPV codes",
+      "type": "array",
+      "editor": "stringList",
+      "description": "Common Procurement Vocabulary codes to look for. Matching is hierarchical: 45000000 also returns every code below it, such as 45213150. Leave empty to accept any category.",
+      "prefill": ["45000000"],
+      "default": []
+    },
+    "countries": {
+      "title": "Buyer countries",
+      "type": "array",
+      "editor": "stringList",
+      "description": "Three letter country codes of the buyers you care about, for example FRA, DEU, ESP, PRT. Leave empty to accept every country.",
+      "prefill": ["FRA", "DEU"],
+      "default": []
+    },
+    "minValueEur": {
+      "title": "Minimum contract value (EUR)",
+      "type": "integer",
+      "editor": "number",
+      "description": "Skip notices whose total value is below this amount in euros. Notices published without a value are skipped whenever this is above zero. Use 0 to keep every notice.",
+      "default": 0,
+      "minimum": 0,
+      "unit": "EUR"
+    },
+    "keywords": {
+      "title": "Title keywords",
+      "type": "array",
+      "editor": "stringList",
+      "description": "Words to look for in the notice title. A notice is kept when any one of them appears, ignoring upper and lower case. Leave empty to skip this filter.",
+      "prefill": ["school"],
+      "default": []
+    },
+    "publishedSince": {
+      "title": "Published since",
+      "type": "string",
+      "editor": "textfield",
+      "description": "Optional date, in the form YYYY-MM-DD, to look only at notices published on or after it. Leave empty to search every published notice.",
+      "prefill": "",
+      "pattern": "^$|^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "maxResults": {
+      "title": "Maximum results",
+      "type": "integer",
+      "editor": "number",
+      "description": "Largest number of matching notices to store in the dataset for one run. Lower it to keep a run cheap and fast.",
+      "default": 100,
+      "minimum": 1,
+      "maximum": 5000
+    }
+  },
+  "required": []
+}

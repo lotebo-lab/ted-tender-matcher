@@ -1,0 +1,5 @@
+# Pinned to the major version this Actor was written and tested against
+# (apify 4.0.2 locally). The charging code reads ChargeResult.charged_count and
+# ChargeResult.event_charge_limit_reached, so the SDK major must not drift.
+apify>=4.0,<5.0
+requests>=2.32,<3.0

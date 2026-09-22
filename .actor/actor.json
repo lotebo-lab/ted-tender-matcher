@@ -1,0 +1,25 @@
+{
+    "actorSpecification": 1,
+    "name": "ted-tender-matcher",
+    "title": "EU Tenders Scraper: TED Public Procurement Notices",
+    "description": "Filters public contract notices from Tenders Electronic Daily (TED) by CPV code, buyer country, minimum value and title keywords, and returns one row per matching notice with eight public fields. No personal data is collected.",
+    "version": "0.2",
+    "buildTag": "latest",
+    "dockerfile": "../Dockerfile",
+    "input": "./input_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    },
+    "output": "./output_schema.json",
+    "minMemoryMbytes": 256,
+    "defaultMemoryMbytes": 512,
+    "pay_per_event": {
+        "actorChargeEvents": {
+            "tender-matched": {
+                "eventTitle": "Matching tender",
+                "eventDescription": "Charged once for each matching tender notice stored in the dataset. A run that finds nothing is not charged.",
+                "eventPriceUsd": 0.1
+            }
+        }
+    }
+}
