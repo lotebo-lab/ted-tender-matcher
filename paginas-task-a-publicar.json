@@ -1,0 +1,118 @@
+{
+  "_nota": "Seis chamadas prontas de apify_task_publish para o ted-tender-matcher. O Desenvolvedor de Actor nao tem a ferramenta apify_task_publish no cargo dele (erro literal: 'Error: No such tool available: mcp__lab__apify_task_publish', duas vezes em 23/09/2026). Quem tem a ferramenta executa cada bloco como esta. Nao subir build deste Actor antes de publicar: build novo invalida o publicConfig. Baseline medido em 23/09/2026: as seis URLs devolvem HTTP 307, igual ao controle inventado, ou seja nenhuma existe ainda.",
+  "_comum": {
+    "business_id": "eaa229b907ca4575956a21c02196e5ef",
+    "actor_id": "lotebo-lab/ted-tender-matcher",
+    "dataset_view": "overview"
+  },
+  "tasks": [
+    {
+      "task_name": "it-consulting-tenders-in-germany",
+      "title": "How do I find IT consulting tenders in Germany?",
+      "description": "Return German public contract notices under CPV 72000000, IT services and software development, with buyer, value, deadline and the TED link.",
+      "run_input": {
+        "cpvCodes": ["72000000"],
+        "countries": ["DEU"],
+        "minValueEur": 0,
+        "keywords": [],
+        "publishedSince": "",
+        "maxResults": 50
+      },
+      "input_schema_fields": ["cpvCodes", "countries", "minValueEur", "maxResults"],
+      "dataset_view": "overview",
+      "seo_title": "IT Consulting Tenders in Germany by CPV Code (TED)",
+      "seo_description": "Find German public tenders for IT consulting and software development under CPV 72000000, with buyer, contract value, deadline and the TED notice link.",
+      "_porque_esta_palavra": "72000000 e o rotulo oficial 'IT services: consulting, software development, Internet and support' no EU Vocabularies (http://data.europa.eu/cpv/cpv/72000000), lido em 23/09/2026. DEU esta escrito no proprio input_schema como exemplo de codigo de pais de tres letras. A entrada de exemplo que ja esta publicada na pagina do Actor usa CPV 72000000 com FRA e DEU."
+    },
+    {
+      "task_name": "construction-tenders-in-portugal",
+      "title": "Which construction tenders are open in Portugal?",
+      "description": "List Portuguese construction contract notices under CPV 45000000 and every code below it, with buyer, contract value, deadline and the notice link.",
+      "run_input": {
+        "cpvCodes": ["45000000"],
+        "countries": ["PRT"],
+        "minValueEur": 0,
+        "keywords": [],
+        "publishedSince": "",
+        "maxResults": 50
+      },
+      "input_schema_fields": ["cpvCodes", "countries", "minValueEur", "maxResults"],
+      "dataset_view": "overview",
+      "seo_title": "Construction Tenders in Portugal by CPV Code (TED)",
+      "seo_description": "List Portuguese construction tenders published on TED under CPV 45000000 and every code below it, with buyer, value in euros, deadline and notice link.",
+      "_porque_esta_palavra": "O proprio input_schema do Actor usa 45000000 como prefill e explica a heranca hierarquica: '45000000 also returns every code below it, such as 45213150'. A pagina oficial do CPV no TED confirma a regra: 'The first two digits identify the divisions (XX000000-Y)' (https://ted.europa.eu/simap/codes-and-nomenclatures/cpv). PRT esta no input_schema como exemplo de pais."
+    },
+    {
+      "task_name": "healthcare-tenders-in-spain",
+      "title": "How do I find healthcare tenders in Spain?",
+      "description": "Search Spanish notices by title keyword in Spanish and in English, so hospital and health service contracts show up even when the CPV code is unhelpful.",
+      "run_input": {
+        "cpvCodes": [],
+        "countries": ["ESP"],
+        "minValueEur": 0,
+        "keywords": ["hospital", "sanitario", "salud", "health"],
+        "publishedSince": "",
+        "maxResults": 50
+      },
+      "input_schema_fields": ["countries", "keywords", "maxResults"],
+      "dataset_view": "overview",
+      "seo_title": "Healthcare Tenders in Spain from TED by Keyword",
+      "seo_description": "Search Spanish health and hospital tenders on TED by title keyword in Spanish and English, with buyer, contract value, submission deadline and notice link.",
+      "_porque_esta_palavra": "Este caso usa palavra-chave e nao CPV porque o guia de busca do TED descreve a dor assim: 'Too broad and you get noise; too narrow and you miss opportunities coded slightly differently' e 'The machine translations are not always accurate, so it is advisable to also search using keywords in the original language' (https://tenderradar.io/guides/how-to-search-ted-tenders, na memoria da empresa desde 20/09/2026). Por isso as palavras vao em espanhol e em ingles. ESP esta no input_schema como exemplo de pais."
+    },
+    {
+      "task_name": "eu-tenders-above-1-million-euros",
+      "title": "Which EU tenders are worth more than 1 million euros?",
+      "description": "Keep only notices whose published total value is at least EUR 1,000,000, across every country and every CPV family, with the value on each row.",
+      "run_input": {
+        "cpvCodes": [],
+        "countries": [],
+        "minValueEur": 1000000,
+        "keywords": [],
+        "publishedSince": "",
+        "maxResults": 100
+      },
+      "input_schema_fields": ["minValueEur", "countries", "cpvCodes", "maxResults"],
+      "dataset_view": "overview",
+      "seo_title": "EU Tenders Above 1 Million Euros, from TED",
+      "seo_description": "Keep only European public tenders whose published total value reaches EUR 1,000,000 or more, in any country and any CPV family, with deadline and link.",
+      "_porque_esta_palavra": "O campo minValueEur existe no input_schema com a unidade EUR e a regra escrita: 'Notices published without a value are skipped whenever this is above zero'. O valor de corte de 1 milhao e o unico filtro do schema que separa edital grande de edital pequeno, e o campo total_value_eur do dataset_schema (exemplo 1250000) e o que a pagina mostra."
+    },
+    {
+      "task_name": "eu-tenders-published-this-week",
+      "title": "How do I see only EU tenders published this week?",
+      "description": "Set a start date and the run returns only notices published on or after it, so a weekly tender watch never rereads what you already looked at.",
+      "run_input": {
+        "cpvCodes": [],
+        "countries": ["FRA", "DEU", "ESP", "PRT"],
+        "minValueEur": 0,
+        "keywords": [],
+        "publishedSince": "2026-09-16",
+        "maxResults": 100
+      },
+      "input_schema_fields": ["publishedSince", "countries", "maxResults"],
+      "dataset_view": "overview",
+      "seo_title": "EU Tenders Published This Week, from TED",
+      "seo_description": "Set a start date and get only the TED notices published on or after it, so a weekly tender watch never shows you the same notice twice. No login needed.",
+      "_porque_esta_palavra": "O caso de uso pedido era 'editais que fecham nos proximos 15 dias', mas o input_schema nao tem filtro de prazo: o unico filtro de data que ele aceita e publishedSince ('Optional date, in the form YYYY-MM-DD, to look only at notices published on or after it'). Entao o caso foi reescrito para o que o Actor realmente faz. O prazo continua visivel na saida, no campo deadline do dataset_schema. Os quatro paises sao exatamente os quatro citados no input_schema."
+    },
+    {
+      "task_name": "search-eu-tenders-by-cpv-code-for-software",
+      "title": "How do I search EU tenders by CPV code for software?",
+      "description": "Give CPV 48000000 and 72000000 and get every matching software notice in the countries you sell in, with value, deadline and the official TED link.",
+      "run_input": {
+        "cpvCodes": ["48000000", "72000000"],
+        "countries": ["FRA", "DEU", "ESP", "PRT"],
+        "minValueEur": 0,
+        "keywords": [],
+        "publishedSince": "",
+        "maxResults": 100
+      },
+      "input_schema_fields": ["cpvCodes", "countries", "minValueEur", "maxResults"],
+      "dataset_view": "overview",
+      "seo_title": "Search EU Tenders by CPV Code for Software (TED)",
+      "seo_description": "Give CPV 48000000 or 72000000 and get every matching software tender in the countries you sell in, with buyer, value, deadline and the official TED link.",
+      "_porque_esta_palavra": "48000000 e o rotulo oficial 'Software package and information systems' e 72000000 e 'IT services: consulting, software development, Internet and support', os dois lidos em 23/09/2026 no EU Vocabularies (http://data.europa.eu/cpv/cpv/48000000 e .../72000000). Sao duas divisoes diferentes, e fornecimento de software cai numa ou na outra conforme o comprador classifica, por isso as duas entram juntas."
+    }
+  ]
+}
