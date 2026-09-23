@@ -1,14 +1,36 @@
 # EU Tenders Scraper: TED Public Procurement Notices by CPV Code, Country and Value
-
+TED publishes hundreds of EU public procurement notices every working day, and the few that match what your company sells are buried in the rest.
 **Run it on the Apify Store: https://apify.com/lotebo-lab/ted-tender-matcher**
-
-Every working day Tenders Electronic Daily (TED), the official journal of European public procurement, publishes hundreds of contract notices. The handful that fit what your company actually sells is buried in the rest, and the TED website hands you a search form rather than a file you can work with.
 
 This Actor takes the filters you already use when you look for work — the **CPV codes** you sell under, the **buyer countries** you serve, a **minimum contract value** and optional **title keywords** — queries the public TED Search API, and returns one row per matching notice with eight public fields, including the deadline and the link to the notice on ted.europa.eu.
 
 **It returns no personal data at all**, and that is not a setting you can turn off: the code is an allow list of eight fields. **It does not tell you whether you can win, and it does not write a bid.** Read "What this Actor does not do" and "Limits of what it does cover" before you buy.
 
 This repository holds the source code. The Actor runs on the Apify platform, so there is nothing to install and nothing to host.
+
+## Quick start
+
+1. Open https://apify.com/lotebo-lab/ted-tender-matcher and switch the input to JSON.
+2. Paste this input, which is valid against [`.actor/input_schema.json`](.actor/input_schema.json), and start the run:
+
+```json
+{
+  "cpvCodes": [
+    "45000000"
+  ],
+  "countries": [
+    "FRA",
+    "DEU"
+  ],
+  "keywords": [
+    "school"
+  ],
+  "minValueEur": 0,
+  "maxResults": 100
+}
+```
+
+Price, as read from the public Apify Store API (`currentPricingInfo`) on 2026-09-23 16:25 UTC: US$ 0.10 per `tender-matched` event, one per matching notice stored; a run that matches nothing pays no Actor event. Apify charges the platform usage of the run on top; that part is set by the platform, not by this Actor. The full table is under "Price".
 
 ## Use cases
 
@@ -157,7 +179,7 @@ This is tested, not asserted: `tests/test_ted_client.py` includes `test_body_nev
 
 ## Price
 
-Pay per event, one event. This is the price in force on the platform, so it is what a run of yours is charged:
+Pay per event, one event. This price was read from the public Apify Store API (`currentPricingInfo`) on 2026-09-23 16:25 UTC, and it is what a run of yours is charged:
 
 | event | price | when it is charged |
 |---|---|---|
